@@ -15,7 +15,12 @@ class DarkTheme{
   static const Color red=Colors.red;
   static const Color prblue=Color.fromARGB(255,0, 114, 255);
   static const Color whiteCol=Color.fromARGB(255,255, 255, 255);
-  static const Color purple=Color.fromARGB(255, 100, 0, 117);
+  static const Color purple=Color.fromARGB(255, 106, 77, 255);
+  static const Color rectSheet=Color.fromARGB(255, 213, 213, 213);
+  static const Color sheetRecordColor=Color.fromARGB(255, 191, 184,254);
+  static const Color canvaCol=Color.fromARGB(255, 221, 218, 255);
+  static const Color lightTextCol=Color.fromARGB(255, 204, 204, 204);
+  
 
   static const Gradient geneieGradient = LinearGradient(colors: [
   Color.fromARGB(255, 80, 22, 191),

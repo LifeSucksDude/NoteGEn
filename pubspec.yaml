@@ -39,6 +39,12 @@ dependencies:
   firebase_core: ^2.14.0
   google_sign_in: ^6.1.4
   firebase_auth: ^4.6.3
+  file_picker: ^5.3.2
+  record: ^4.4.4
+  audioplayers: ^5.0.0
+  http: ^1.1.0
+  intl: ^0.18.1
+  path_provider: ^2.0.15
 
 dev_dependencies:
   flutter_test:
@@ -60,6 +66,9 @@ flutter:
     - family: Satoshi
       fonts:
         - asset: assets/fonts/Satoshi-Variable.ttf  
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito-ExtraBold.ttf 
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

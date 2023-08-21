@@ -1,0 +1,108 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:notegenierecreated/Widgets/musicplayerforcard.dart';
+import 'package:notegenierecreated/constants/themeDark.dart';
+
+import '../constants/assetsImage.dart';
+
+class MyNoteCard extends StatelessWidget {
+  final bool isStarred;
+  final bool hasCheck;
+  final String noteTitle;
+  final String localAudPath;
+  final String transcribedText;
+  final String cardId;
+   
+   List<String> imagePaths=["assets/images/card1.png","assets/images/card2.png","assets/images/card3.png","assets/images/card4.png","assets/images/card5.png"];
+   List<Color> dateTimeCol=[Color.fromARGB(255, 164, 148, 255),Color.fromARGB(255, 255, 147, 147),Color.fromARGB(255, 201, 201, 201,),Color.fromARGB(255, 146, 176, 255),Color.fromARGB(255, 255, 201, 147)];
+  final String date;
+  final String imagePath;
+   MyNoteCard({super.key, required this.isStarred, required this.hasCheck, required this.noteTitle, required this.localAudPath, required this.transcribedText, required this.date, required this.imagePath, required this.cardId});
+
+  @override
+  Widget build(BuildContext context) {
+    
+    
+   DateTime formattedDate= DateTime.parse(date); //convert the string to the datetime type
+   String formattedDateInString=DateFormat("MMMM dd, yyyy").format(formattedDate);
+   String digitsOnly = DateFormat("yyyyMMddHHmmss").format(formattedDate);
+   int digits=int.tryParse(digitsOnly)??0;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical:8.0),
+      child: Container(
+        height: 180,
+        width: 358,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Color.fromARGB(255, 219, 223, 255),
+          image: DecorationImage(image: AssetImage(imagePaths[digits%5]),fit: BoxFit.cover)
+         // image: DecorationImage(image: AssetImage('some image to be inserted later'))
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left:16.0,right: 16,top: 12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('$noteTitle',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600,color: DarkTheme.textCol),),
+                  Row(
+                    children: [
+                      SizedBox(
+                        child: Container(
+                          height: 20,
+                          width: 20,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(image: AssetImage(AssetImages.goldenStar))
+                          ),
+                        ),
+                      ),
+                     SizedBox(width: 8,),
+                  Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(image: AssetImage(AssetImages.blueunion))
+                    ),
+                  ),
+                    ],
+                  ),
+                
+    
+                ],
+              ),
+            ),
+            SizedBox(height: 12,),
+            CardMusicPlayer(
+              digits: digits,
+              audioPath: localAudPath,
+              
+            ),
+            SizedBox(height: 12,),
+            Container(
+              height: 32,
+              width: 335,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(transcribedText,style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,overflow: TextOverflow.ellipsis,),maxLines: 2,)),
+            ),
+          Padding(
+            padding: const EdgeInsets.only(left:16.0,right: 16,top: 12,bottom: 12),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Container(
+                height: 16,
+                width: 82,
+                child: 
+                 
+                 Text(formattedDateInString,style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: dateTimeCol[digits%5]),)),
+            ),
+          ),
+          
+    
+          ],
+        )
+      ),
+    );
+  }
+}

@@ -5,6 +5,7 @@ import '../constants/themeDark.dart';
 
 
 
+// ignore: must_be_immutable
 class GradButton extends StatelessWidget {
   String text;
  final VoidCallback onTap;
